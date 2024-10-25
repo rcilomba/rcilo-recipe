@@ -302,7 +302,7 @@ function App() {
         />
         <button
           onClick={handleSearchClick}
-          className="ml-2 p-2 bg-blue-500 text-white rounded"
+          className="ml-2 p-2 bg-green-500 text-white rounded"
         >
           <BsSearch />
         </button>
@@ -368,7 +368,7 @@ function App() {
               )}
               <button
                 onClick={closeModal}
-                className="mt-4 p-2 bg-red-500 text-white rounded"
+                className="mt-4 p-2 bg-green-700 text-white rounded"
               >
                 Stäng
               </button>
