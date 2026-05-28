@@ -11,12 +11,12 @@ from backend.app import create_app
 from flask_migrate import upgrade
 app = create_app()
 with app.app_context():
-    upgrade()
+  upgrade(directory="backend/migrations")
 PY
 
 if [ "${RUN_SEED:-}" = "1" ]; then
   echo "RUN_SEED=1 detected — importing seed data..."
-  python backend/import_recipes.py
+  python -m backend.import_recipes
 fi
 
 echo "Starting Gunicorn..."

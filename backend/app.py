@@ -2,10 +2,10 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from flask_migrate import Migrate
 from dotenv import load_dotenv
+import os
 
-from config import Config
-from models import Recipe, db
-
+from backend.config import Config
+from backend.models import Recipe, db
 
 load_dotenv()
 
@@ -14,17 +14,47 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
 
-    # Configure CORS origins via env var CORS_ORIGINS (comma-separated).
-    # If not set, default to allow all origins (useful for initial deploy/testing).
-    import os
+    # Configure CORS
     cors_origins = os.getenv("CORS_ORIGINS")
     if cors_origins:
         origins = [o.strip() for o in cors_origins.split(",") if o.strip()]
         CORS(app, origins=origins)
     else:
         CORS(app)
+
     db.init_app(app)
     Migrate(app, db)
+
+    # --- SEED DATABASE IF RUN_SEED=1 ---
+    with app.app_context():
+        if os.getenv("RUN_SEED") == "1":
+            print("Seeding database...")
+
+            if Recipe.query.count() == 0:
+                seed_recipes = [
+                    Recipe(
+                        title="Spaghetti Bolognese",
+                        time="30 min",
+                        ingredients=["pasta", "köttfärs", "tomatsås"],
+                        cooking=["Koka pasta", "Stek köttfärs", "Blanda"],
+                        image=None,
+                        category="Italian"
+                    ),
+                    Recipe(
+                        title="Kycklinggryta",
+                        time="45 min",
+                        ingredients=["kyckling", "grädde", "lök"],
+                        cooking=["Stek kyckling", "Tillsätt grädde", "Låt sjuda"],
+                        image=None,
+                        category="Dinner"
+                    ),
+                ]
+
+                db.session.add_all(seed_recipes)
+                db.session.commit()
+                print("Database seeded!")
+            else:
+                print("Database already has data, skipping seed.")
 
     @app.get("/health")
     def health_check():
@@ -66,7 +96,6 @@ def create_app():
 
 
 app = create_app()
-
 
 if __name__ == "__main__":
     app.run(debug=True)
