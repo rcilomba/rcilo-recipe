@@ -20,7 +20,7 @@ import salmonPasta from './assets/salmonPasta.jpg';
 Modal.setAppElement('#root');
 
 const API_BASE_URL =
-  process.env.REACT_APP_API_BASE_URL || 'https://rcilo-recipe.onrender.com';
+  import.meta.env.VITE_API_BASE_URL || 'https://rcilo-recipe.onrender.com';
 
 const IMAGE_MAP = {
   'scones.jpeg': scones,
@@ -73,10 +73,7 @@ function App() {
       const normalized = data.map(normalizeRecipe);
       setRecipes(normalized);
     } catch (fetchError) {
-      setError(
-        fetchError.message ||
-          'Kunde inte ansluta till API:t. Kontrollera API-bas-URL och CORS.'
-      );
+      setError(fetchError.message || 'Något gick fel.');
       setRecipes([]);
     } finally {
       setLoading(false);
