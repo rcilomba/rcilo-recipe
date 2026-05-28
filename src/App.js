@@ -20,7 +20,7 @@ import salmonPasta from './assets/salmonPasta.jpg';
 Modal.setAppElement('#root');
 
 const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || 'https://rcilo-recipe.onrender.com';
+  process.env.REACT_APP_API_BASE_URL || 'https://rcilo-recipe.onrender.com';
 
 const IMAGE_MAP = {
   'scones.jpeg': scones,
