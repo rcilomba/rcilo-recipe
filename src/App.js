@@ -63,13 +63,28 @@ function App() {
       const query = search.trim()
         ? `?search=${encodeURIComponent(search.trim())}`
         : '';
-      const response = await fetch(`${API_BASE_URL}/recipes${query}`);
-
-      if (!response.ok) {
-        throw new Error('Kunde inte hämta recept från servern.');
+      // Try backend first
+      let data = null;
+      try {
+        const response = await fetch(`${API_BASE_URL}/recipes${query}`);
+        if (response.ok) {
+          data = await response.json();
+        } else {
+          throw new Error('Backend svarade med fel.');
+        }
+      } catch (backendErr) {
+        // Fallback to static JSON served by the frontend (public/recipes.json)
+        try {
+          const resp2 = await fetch(`/recipes.json`);
+          if (resp2.ok) {
+            data = await resp2.json();
+          } else {
+            throw new Error('Fallback JSON saknas');
+          }
+        } catch (fallbackErr) {
+          throw backendErr;
+        }
       }
-
-      const data = await response.json();
       const normalized = data.map(normalizeRecipe);
       setRecipes(normalized);
     } catch (fetchError) {
