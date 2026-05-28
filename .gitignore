@@ -17,6 +17,14 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.env
+
+# backend
+/backend/.venv
+/backend/venv
+/backend/__pycache__
+/backend/.pytest_cache
+/backend/.env
 
 npm-debug.log*
 yarn-debug.log*
