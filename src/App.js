@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './index.css';
 import { BsSearch } from 'react-icons/bs';
 import Modal from 'react-modal';
@@ -83,7 +83,19 @@ function App() {
     fetchRecipes();
   }, []);
 
-  const recipeCount = recipes.length;
+  // Live search: debounce input changes
+  const debounceRef = useRef(null);
+  useEffect(() => {
+    // skip debounce if user cleared and no recipes yet? still allow
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => {
+      fetchRecipes(searchVal);
+    }, 400);
+    return () => clearTimeout(debounceRef.current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchVal]);
+
+  // const recipeCount = recipes.length;
 
   function handleSearchClick() {
     fetchRecipes(searchVal);
