@@ -14,7 +14,15 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
 
-    CORS(app)
+    # Configure CORS origins via env var CORS_ORIGINS (comma-separated).
+    # If not set, default to allow all origins (useful for initial deploy/testing).
+    import os
+    cors_origins = os.getenv("CORS_ORIGINS")
+    if cors_origins:
+        origins = [o.strip() for o in cors_origins.split(",") if o.strip()]
+        CORS(app, origins=origins)
+    else:
+        CORS(app)
     db.init_app(app)
     Migrate(app, db)
 
