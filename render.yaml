@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: post-it-recipe-backend
+    env: python
+    region: oregon
+    branch: feature/backend
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: gunicorn backend.wsgi:app
+    plan: free
+
+databases:
+  - name: postit-db
+    engine: postgresql
+    plan: starter
+
+# Note: After connecting this repo in Render, go to the service's Environment
+# settings and add any secrets (e.g. SECRET_KEY) and the Flask env vars.
+# Render will create the resources when you deploy the repo.
