@@ -10,5 +10,6 @@ Deploy instructions for backend
    - Use the platform terminal or one-off job to run: `flask db upgrade`
 
 Notes:
+
 - The app already enables CORS (allow-all). For production, restrict allowed origins in `app.py` if desired.
 - Set `REACT_APP_API_BASE_URL` in your Netlify site settings to the deployed backend URL and rebuild the frontend.
