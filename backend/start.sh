@@ -16,7 +16,7 @@ PY
 
 if [ "${RUN_SEED:-}" = "1" ]; then
   echo "RUN_SEED=1 detected — importing seed data..."
-  python backend/import_recipes.py
+  python -m backend.import_recipes
 fi
 
 echo "Starting Gunicorn..."

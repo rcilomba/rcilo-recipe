@@ -1,8 +1,8 @@
 import json
 import os
 
-from app import create_app
-from models import db, Recipe
+from backend.app import create_app
+from backend.models import Recipe, db
 
 
 def load_seed(path="recipes_seed.json"):
