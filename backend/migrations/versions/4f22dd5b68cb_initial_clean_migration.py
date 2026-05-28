@@ -1,8 +1,8 @@
-"""create recipes
+"""initial clean migration
 
-Revision ID: 14628a1823ca
+Revision ID: 4f22dd5b68cb
 Revises: 
-Create Date: 2026-05-28 12:00:14.639632
+Create Date: 2026-05-28 23:41:14.949284
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '14628a1823ca'
+revision = '4f22dd5b68cb'
 down_revision = None
 branch_labels = None
 depends_on = None

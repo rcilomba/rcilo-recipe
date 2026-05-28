@@ -4,8 +4,8 @@ from flask_migrate import Migrate
 from dotenv import load_dotenv
 import os
 
-from backend.config import Config
-from backend.models import Recipe, db
+from config import Config
+from models import Recipe, db
 
 load_dotenv()
 
