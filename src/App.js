@@ -19,7 +19,7 @@ import salmonPasta from './assets/salmonPasta.jpg';
 // Set app element for the modal
 Modal.setAppElement('#root');
 
-const API_BASE_URL = 'http://127.0.0.1:5000';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://127.0.0.1:5000';
 
 const IMAGE_MAP = {
   'scones.jpeg': scones,
