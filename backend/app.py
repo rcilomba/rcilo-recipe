@@ -3,8 +3,8 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from dotenv import load_dotenv
 
-from config import Config
-from models import Recipe, db
+from backend.config import Config
+from backend.models import Recipe, db
 
 
 load_dotenv()
