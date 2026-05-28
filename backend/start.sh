@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+echo "Ensuring pip, setuptools and wheel are installed in runtime venv..."
+python -m pip install --upgrade pip setuptools wheel || true
+python -m pip install -r backend/requirements.txt || true
+
 echo "Running database migrations..."
 python - <<'PY'
 from backend.app import create_app
