@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import './index.css';
 import { BsSearch } from 'react-icons/bs';
 import Modal from 'react-modal';
@@ -48,6 +48,7 @@ function normalizeRecipe(recipe) {
 }
 
 function App() {
+  const [allRecipes, setAllRecipes] = useState([]);
   const [recipes, setRecipes] = useState([]);
   const [searchVal, setSearchVal] = useState('');
   const [selectedRecipe, setSelectedRecipe] = useState(null);
@@ -55,18 +56,35 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  const fetchRecipes = async (search = '') => {
+  const applySearch = (search, sourceRecipes) => {
+    const term = search.trim().toLowerCase();
+
+    if (!term) {
+      return sourceRecipes;
+    }
+
+    return sourceRecipes.filter((recipe) => {
+      const title = (recipe.title || '').toLowerCase();
+      const ingredients = (recipe.ingredients || []).join(' ').toLowerCase();
+      const cooking = (recipe.cooking || []).join(' ').toLowerCase();
+
+      return (
+        title.includes(term) ||
+        ingredients.includes(term) ||
+        cooking.includes(term)
+      );
+    });
+  };
+
+  const fetchRecipes = useCallback(async () => {
     try {
       setLoading(true);
       setError('');
 
-      const query = search.trim()
-        ? `?search=${encodeURIComponent(search.trim())}`
-        : '';
       // Try backend first
       let data = null;
       try {
-        const response = await fetch(`${API_BASE_URL}/recipes${query}`);
+        const response = await fetch(`${API_BASE_URL}/recipes`);
         if (response.ok) {
           data = await response.json();
         } else {
@@ -86,35 +104,32 @@ function App() {
         }
       }
       const normalized = data.map(normalizeRecipe);
-      setRecipes(normalized);
+      setAllRecipes(normalized);
+      setRecipes(applySearch(searchVal, normalized));
     } catch (fetchError) {
       setError(fetchError.message || 'Något gick fel.');
       setRecipes([]);
     } finally {
       setLoading(false);
     }
-  };
+  }, [searchVal]);
 
   useEffect(() => {
     fetchRecipes();
-  }, []);
+  }, [fetchRecipes]);
 
   // Live search: debounce input changes
   const debounceRef = useRef(null);
   useEffect(() => {
-    // skip debounce if user cleared and no recipes yet? still allow
     if (debounceRef.current) clearTimeout(debounceRef.current);
     debounceRef.current = setTimeout(() => {
-      fetchRecipes(searchVal);
+      setRecipes(applySearch(searchVal, allRecipes));
     }, 400);
     return () => clearTimeout(debounceRef.current);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchVal]);
-
-  // const recipeCount = recipes.length;
+  }, [searchVal, allRecipes]);
 
   function handleSearchClick() {
-    fetchRecipes(searchVal);
+    setRecipes(applySearch(searchVal, allRecipes));
   }
 
   const openModal = (recipe) => {
