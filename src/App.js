@@ -13,6 +13,7 @@ import strawberryPie from './assets/strawberryPie.jpg';
 import cabbageSoup from './assets/cabbageSoup.jpg';
 import marinatedChicken from './assets/marinatedChicken.jpg';
 import bananaChocolateBalls from './assets/bananaChocolateBalls.jpg';
+import booWok from './assets/booWok.jpeg';
 import wok from './assets/wok.avif';
 import salmonPasta from './assets/salmonPasta.jpg';
 
@@ -34,6 +35,7 @@ const IMAGE_MAP = {
   'cabbageSoup.jpg': cabbageSoup,
   'marinatedChicken.jpg': marinatedChicken,
   'bananaChocolateBalls.jpg': bananaChocolateBalls,
+  'booWok.jpeg': booWok,
   'wok.avif': wok,
   'salmonPasta.jpg': salmonPasta,
 };

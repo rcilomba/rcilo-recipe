@@ -251,7 +251,7 @@
       "oregano"
     ],
     "cooking": ["Blanda kryddor och maninera med olja till köttet"],
-    "image": "spiciesChicken1.jpg"
+    "image": "spicesChicken1.jpg"
   },
   {
     "title": "Maninerad kyckling (endast kryddor)",
@@ -310,6 +310,6 @@
       "äppelättika"
     ],
     "cooking": ["Blanda kryddor och maninera med olja till köttet"],
-    "image": "booWok.jpg"
+    "image": "booWok.jpeg"
   }
 ]
