@@ -16,6 +16,8 @@ import bananaChocolateBalls from './assets/bananaChocolateBalls.jpg';
 import booWok from './assets/booWok.jpeg';
 import wok from './assets/wok.avif';
 import salmonPasta from './assets/salmonPasta.jpg';
+import spicesChicken1 from './assets/spicesChicken1.jpg';
+import spicesChicken2 from './assets/spicesChicken2.jpg';
 
 // Set app element for the modal
 Modal.setAppElement('#root');
@@ -38,6 +40,8 @@ const IMAGE_MAP = {
   'booWok.jpeg': booWok,
   'wok.avif': wok,
   'salmonPasta.jpg': salmonPasta,
+  'spicesChicken1.jpg': spicesChicken1,
+  'spicesChicken2.jpg': spicesChicken2,
 };
 
 function normalizeRecipe(recipe) {
