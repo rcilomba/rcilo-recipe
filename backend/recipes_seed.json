@@ -238,5 +238,78 @@
     ],
     "cooking": ["Koka tillsammans", "Småkoka i 1,5h"],
     "image": "cabbageSoup.jpg"
+  },
+
+  {
+    "title": "Maninerad kyckling (endast kryddor)",
+    "time": "1 min",
+    "ingredients": [
+      "Vitlökskrydda",
+      "Allkrydda/grilkrydda",
+      "Paprikapulvr",
+      "Timjan",
+      "oregano"
+    ],
+    "cooking": ["Blanda kryddor och maninera med olja till köttet"],
+    "image": "spiciesChicken1.jpg"
+  },
+  {
+    "title": "Maninerad kyckling (endast kryddor)",
+    "time": "1 min",
+    "ingredients": [
+      "Vitlökskrydda",
+      "Allkrydda/grilkrydda",
+      "Paprikapulver",
+      "Timjan",
+      "oregano"
+    ],
+    "cooking": ["Blanda kryddor och maninera med olja till köttet"],
+    "image": "spicesChicken1.jpg"
+  },
+  {
+    "title": "Maninerad kyckling (endast kryddor)",
+    "time": "1 min",
+    "ingredients": [
+      "Curry",
+      "Gurkmeja",
+      "Ingefära",
+      "Kanel",
+      "Kummin",
+      "Muskatnöt (lite)"
+    ],
+    "cooking": ["Blanda kryddor och maninera med olja till köttet"],
+    "image": "spicesChicken2.jpg"
+  },
+  {
+    "title": "Okragryta med kött",
+    "time": "15 min",
+    "ingredients": [
+      "Palmolja",
+      "Grönsakssalt",
+      "Köttbitar",
+      "Okra",
+      "Mannagryn"
+    ],
+    "cooking": [
+      "Skär okra i två delar för att se om det finns larv. Koka upp med lite vatten och rör till okran blir mjuk. Tillsätt stekt kött och kryddor. Koka mannagryn i en annan kastrull och servera tillsammans."
+    ],
+    "image": "okraStew.jpg"
+  },
+  {
+    "title": "Boo's wok",
+    "time": "20 min",
+    "ingredients": [
+      "Kyckling",
+      "Morötter",
+      "Blomkål",
+      "purjulök",
+      "glasnudlar",
+      "sesamolja",
+      "soyasås",
+      "oystersås",
+      "äppelättika"
+    ],
+    "cooking": ["Blanda kryddor och maninera med olja till köttet"],
+    "image": "booWok.jpg"
   }
 ]
