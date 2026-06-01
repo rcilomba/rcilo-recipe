@@ -239,6 +239,22 @@
     "cooking": ["Koka tillsammans", "Småkoka i 1,5h"],
     "image": "cabbageSoup.jpg"
   },
+
+  {
+    "title": "Okragryta med kött",
+    "time": "15 min",
+    "ingredients": [
+      "Palmolja",
+      "Grönsakssalt",
+      "Köttbitar",
+      "Okra",
+      "Mannagryn"
+    ],
+    "cooking": [
+      "Skär okra i två delar för att se om det finns larv. Koka upp med lite vatten och rör till okran blir mjuk. Tillsätt stekt kött och kryddor. Koka mannagryn i en annan kastrull och servera tillsammans."
+    ],
+    "image": "okraStew.jpg"
+  },
   {
     "title": "Maninerad kyckling (endast kryddor)",
     "time": "1 min",

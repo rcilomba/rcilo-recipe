@@ -18,6 +18,7 @@ import wok from './assets/wok.avif';
 import salmonPasta from './assets/salmonPasta.jpg';
 import spicesChicken1 from './assets/spicesChicken1.jpg';
 import spicesChicken2 from './assets/spicesChicken2.jpg';
+import okraStew from './assets/okraStew.jpg';
 
 // Set app element for the modal
 Modal.setAppElement('#root');
@@ -42,6 +43,7 @@ const IMAGE_MAP = {
   'salmonPasta.jpg': salmonPasta,
   'spicesChicken1.jpg': spicesChicken1,
   'spicesChicken2.jpg': spicesChicken2,
+  'okraStew.jpg': okraStew,
 };
 
 function normalizeRecipe(recipe) {
